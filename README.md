@@ -61,4 +61,4 @@ You can extend this application in many ways:
 4. Add error handling for HTTP error codes like 404 and 500.
 5. Add user-friendly features like password resetting, email confirmation, and user profiles.
 
-Remember that every change you make can have impacts on other parts of the application. Always thoroughly
+Remember that every change you make can have impacts on other parts of the application. Always thoroughly test your changes, and use version control to keep track of them
