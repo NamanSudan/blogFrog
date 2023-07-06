@@ -4,5 +4,5 @@ from website import create_app
 if __name__ == "__main__":
     # this is the app
     app = create_app()
-    # this is the main function
+    # this is the main function and this command runs the app
     app.run(debug=True)

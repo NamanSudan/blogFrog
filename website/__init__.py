@@ -12,6 +12,7 @@ def create_app():
 
     # this is the database
     from .views import views
+    # this is the authentication
     from .auth import auth
     # this is the database file
     app.register_blueprint(views, url_prefix='/')
