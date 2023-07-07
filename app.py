@@ -6,3 +6,5 @@ if __name__ == "__main__":
     app = create_app()
     # this is the main function and this command runs the app
     app.run(debug=True)
+
+    
