@@ -1,14 +1,14 @@
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
 from os import path
 from flask_login import LoginManager
 import psycopg2
 import os
 from dotenv import load_dotenv
 
-# setting up the database
-db = SQLAlchemy()
-DB_NAME = "database.db"
+from .database import db  # Import the already initialized `db` object from `database.py`
+
+from flask_migrate import Migrate
+from .models import Post  # Assuming User and Post are your models
 
 load_dotenv()
 
@@ -22,16 +22,15 @@ def create_app():
     app = Flask(__name__)
     app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql://{DB_USER}:{DB_PASS}@{DB_HOST}:{DB_PORT}/{DB_NAME}'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-    db.init_app(app)
+    db.init_app(app)  # This is fine - you're not reinitializing `db` here, but attaching it to the app
+
+    # Set up migration
+    migrate = Migrate(app, db)
 
     from .views import views
     from .auth import auth
 
     app.register_blueprint(views, url_prefix='/')
     app.register_blueprint(auth, url_prefix='/')
-
-    with app.app_context():
-        from . import models
-        db.create_all()
 
     return app
