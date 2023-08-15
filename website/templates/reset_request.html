@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Password Reset Request{% endblock %}
+
+{% block content %}
+    <h2>Password Reset Request</h2>
+    <p>Please enter your email address to request a password reset link.</p>
+
+    <form method="post" action="{{ url_for('auth.reset_request') }}">
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Request Password Reset</button>
+    </form>
+{% endblock %}

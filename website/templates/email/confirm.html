@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}
+Email Confirmation
+{% endblock %}
+
+{% block content %}
+<div class="my-5">
+    <h2 class="text-center">Email Confirmation</h2>
+    <hr>
+    <div class="alert alert-info mt-4">
+        Thank you for signing up! Please confirm your email address to complete the registration.
+    </div>
+    
+    <div class="d-flex justify-content-center">
+        <a href="{{ confirm_url }}" class="btn btn-primary mt-3">Confirm Email</a>
+    </div>
+
+    <div class="mt-4 text-center">
+        <p>If you did not sign up for our platform, please disregard this email.</p>
+    </div>
+</div>
+{% endblock %}

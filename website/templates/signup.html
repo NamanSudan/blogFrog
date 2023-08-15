@@ -2,12 +2,30 @@
 {% block title %}Sign-Up{% endblock %}
 
 {% block content %}
-<form method="POST">
-    <h3 align="center">
-        Sign-Up
-    </h3>
 
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <div class="flashed-messages">
+    {% for category, message in messages %}
+        <div class="alert alert-{{ category }}">{{ message }}</div>
+    {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}
+
+<form method="POST">
+    <h3 align="center">Sign-Up</h3>
+    
     <div class="form-group">
+        <label for="name">Name</label>
+        <input
+            type="text"
+            id="name"
+            name="name"
+            class="form-control"
+            placeholder="Enter Full Name"
+        />
+        
         <label for="email">Email</label>
         <input
             type="text"
@@ -16,6 +34,7 @@
             class="form-control"
             placeholder="Enter Email"
         />
+        
         <label for="username">Username</label>
         <input
             type="text"
@@ -24,6 +43,7 @@
             class="form-control"
             placeholder="Enter Username"
         />
+        
         <label for="password1">Password</label>
         <input
             type="password"
@@ -32,6 +52,7 @@
             class="form-control"
             placeholder="Enter Password"
         />
+        
         <label for="password2">Password</label>
         <input
             type="password"
@@ -40,12 +61,11 @@
             class="form-control"
             placeholder="Enter Password Again"
         />
+        
         <br/>
         <div align="center">
-            <button class="btn btn-primary", type="submit">Sign-Up</button>
+            <button class="btn btn-primary" type="submit">Sign-Up</button>
         </div>
     </div>
 
-</form>
-
-{% endblock %}
+{% endblock %}  {# This is the closing tag that was missing #}

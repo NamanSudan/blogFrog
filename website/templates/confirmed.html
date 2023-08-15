@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Email Confirmed
+{% endblock %}
+
+{% block content %}
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    Email Confirmation
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Success!</h5>
+                    <p class="card-text">Thank you for confirming your email address. You can now enjoy all the features of our application.</p>
+                    <a href="{{ url_for('auth.sign_in') }}" class="btn btn-primary">Proceed to Sign In</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
