@@ -2,6 +2,20 @@
 {% block title %}Sign-In{% endblock %}
 
 {% block content %}
+
+<!-- Flash Messages Section -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <div class="flash-messages">
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endwith %}
+
 <form method="POST">
     <h3 align="center">
         Sign-In
@@ -24,12 +38,14 @@
             class="form-control"
             placeholder="Enter Password"
         />
+        <div style="margin-top: 10px;">
+            <a href="{{ url_for('auth.forgot_password') }}">Forgot Password?</a>
+        </div>
         <br/>
         <div align="center">
             <button class="btn btn-primary", type="submit">Sign-In</button>
         </div>
     </div>
-
 </form>
 
 {% endblock %}
